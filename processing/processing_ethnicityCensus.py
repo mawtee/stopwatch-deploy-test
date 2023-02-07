@@ -27,7 +27,7 @@ def load_and_clean(year, nskip, colnames):
     
     #; Load census data
     print("Loading and aggregating "+ str(year) +" census data")
-    dfCensusLA = pd.read_csv('source data/'+ str(year) +'_census_la.csv',  skiprows=nskip)
+    dfCensusLA = pd.read_csv('sourceData/'+ str(year) +'_census_la.csv',  skiprows=nskip)
 
     #; Rename columns
     dfCensusLA.columns = colnames
@@ -77,7 +77,7 @@ def aggregate(dfCensusLA, year):
     
     #; Lookup 2021 LA codes for 2011 LA census data via merge
     if year == 2011:
-      dfLookupLA = pd.read_csv(r'source data\la11_la21_lookup.csv',skiprows = 2, header = 0,
+      dfLookupLA = pd.read_csv('sourceData\la11_la21_lookup.csv',skiprows = 2, header = 0,
                                usecols=['Local Authority District Area 2013 Code', 
                                         'Local Authority District Area 2021 Code'])
       dfCensusLA = pd.merge(dfCensusLA, dfLookupLA, 
@@ -91,7 +91,7 @@ def aggregate(dfCensusLA, year):
     print("Total number of LAs in " + str(year) + " data = " + str(dfCensusLA['laCode'].nunique()))
 
     #; Load LA to PFA lookup
-    dfLookupPFA = pd.read_csv(r'source data\la_pfa_lookup.csv')
+    dfLookupPFA = pd.read_csv('sourceData\la_pfa_lookup.csv')
 
     #; Drop redundant columns and rename
     dfLookupPFA = dfLookupPFA.drop(['CSP21CD', 'CSP21NM', 'LAD21NM'], axis=1)
@@ -211,8 +211,6 @@ def format_census():
     dfCensusPFAseriesIpol = interpolate(dfCensusPFAseries)
     
     # Return time series
-    for col in dfCensusPFAseriesIpol.columns:
-      print(col)
     return dfCensusPFAseriesIpol
 
 
@@ -223,7 +221,7 @@ format_census()
 
 
 #### Some random shit - can't figure out how to import script into iPython console
-### so that I can inspect dataframe as Spyder object/variable fs
+### so that I can inspect dataframe as Spyder object/variable f
 #if __name__ == "__main__": 
 # import scriptname
 # format census()
