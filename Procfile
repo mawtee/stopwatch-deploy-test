@@ -1,0 +1,1 @@
+web: panel serve --adress="test_deployment" --port=$PORT deploy.py --allow-websocket-origin=deploy-test.herokuapp.com
