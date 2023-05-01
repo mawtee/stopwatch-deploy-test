@@ -796,35 +796,35 @@ def map_pfa(year_ops, pfaName_ops, legislation_ops, population_ops):
         }
     }
     # Combine map elements and render as Panel pane
-    deckMap = pdk.Deck(layers=[polygon_3d, column_layer],
-                       initial_view_state=view_state, tooltip=tooltip)
-    map_pane = pn.pane.DeckGL(deckMap, height=585, width=690)
-    return map_pane
+    #deckMap = pdk.Deck(layers=[polygon_3d, column_layer],
+    #                   initial_view_state=view_state, tooltip=tooltip)
+    #map_pane = pn.pane.DeckGL(deckMap, height=585, width=690)
+    #return map_pane
 
 
-@pn.depends(year_ops, pfaName_ops, legislation_ops)
-def map_pfa_title(year_ops, pfaName_ops, legislation_ops):
-    title_html = pn.pane.Markdown('Number of stop-searches in '+str(pfaName_ops) + ' compared to other PFAs, '+str(year_ops[0])+"-"+str(year_ops[1]),
-                                  style={"font-family": "Lucida Sans Unicode", "color": "white", 'font-size': '18px', 'font-weight': '300px', 'background-color': '#2C353C', 'border-radius': '0px', "padding-left": "15px"}, margin=(0, 0, -9, -9))
-    return title_html
+#@pn.depends(year_ops, pfaName_ops, legislation_ops)
+#def map_pfa_title(year_ops, pfaName_ops, legislation_ops):
+#    title_html = pn.pane.Markdown('Number of stop-searches in '+str(pfaName_ops) + ' compared to other PFAs, '+str(year_ops[0])+"-"+str(year_ops[1]),
+#                                  style={"font-family": "Lucida Sans Unicode", "color": "white", 'font-size': '18px', 'font-weight': '300px', 'background-color': '#2C353C', 'border-radius': '0px', "padding-left": "15px"}, margin=(0, 0, -9, -9))
+#    return title_html
 # 181818
 
 ###################################################################################
 
 
 ###############################################################################
-#logo = pn.panel('stopwatch_logo.png', width=250, align='start')
+logo = pn.panel('stopwatch_logo.png', width=250, align='start')
 
 
-#def image_to_data_url(filename):
-#    ext = filename.split('.')[-1]
-#    prefix = f'data:image/{ext};base64,'
-#    with open(filename, 'rb') as f:
-#        img = f.read()
-#    return prefix + base64.b64encode(img).decode('utf-8')
+def image_to_data_url(filename):
+    ext = filename.split('.')[-1]
+    prefix = f'data:image/{ext};base64,'
+    with open(filename, 'rb') as f:
+        img = f.read()
+    return prefix + base64.b64encode(img).decode('utf-8')
 
 
-#logo2 = image_to_data_url('stopwatch_logo.png')
+logo2 = image_to_data_url('stopwatch_logo.png')
 #logo2 = image_to_data_url('stopwatch_logo.png')
 
 #one = pn.widgets.Button(name='Overview', width=50, button_type='primary', height = 35)
@@ -847,6 +847,7 @@ colorpicker = pn.Row(
 
 
 # Key statistics   # Technical notes
+
 # 181818
 
 
@@ -858,7 +859,7 @@ colorpicker = pn.Row(
 # , favicon = logo2
 template = pn.template.FastGridTemplate(theme="dark",
                                         site="", title="Interactive stop and search tracker",
-                                        sidebar=[pn.Spacer(
+                                        sidebar=[logo,pn.Spacer(
                                             height=15), main_ops_pane, pn.Spacer(
                                             height=15), footer_pane],
                                         sidebar_width=410, header_background='#130C16',
@@ -872,12 +873,13 @@ template = pn.template.FastGridTemplate(theme="dark",
 #  background_color = '#130C16'
 template.main[:2, :7] = plot_num_tsline
 template.main[:2, 7:12] = plot_bar_eth_prop
-template.main[2:6, :7] = pn.Column(map_pfa_title, map_pfa)
+template.main[2:6, :7] = plot_tsscatter
 template.main[2:6, 7:12] = plot_tsscatter
 template.main[6:8, :6] = plot_bar_odds_ratio_UK
 template.main[6:8, 6:12] = plot_bar_odds_ratio_PFA
 
 template.servable()
+
 
 
 # populate factsheet + write out reference notes
