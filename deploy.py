@@ -873,7 +873,7 @@ template = pn.template.FastGridTemplate(theme="dark",
 #  background_color = '#130C16'
 template.main[:2, :7] = plot_num_tsline
 template.main[:2, 7:12] = plot_bar_eth_prop
-template.main[2:6, :7] = pn.Column(map_pfa_title, map_pfa)
+template.main[2:6, :7] = plot_tsscatter
 template.main[2:6, 7:12] = plot_tsscatter
 template.main[6:8, :6] = plot_bar_odds_ratio_UK
 template.main[6:8, 6:12] = plot_bar_odds_ratio_PFA
