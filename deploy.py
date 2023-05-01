@@ -13,10 +13,11 @@ import geopandas as gpd
 import panel as pn
 import panel_highcharts as ph
 import pydeck as pdk
-ph.config.theme("auto")
-pn.extension('highchart')
+ph.config.theme("high-contrast-dark")
+pn.extension('highchart', sizing_mode="stretch_width")
 pn.extension('deckgl')
 rnd.seed(115520)
+
 
 
 #import bokeh.io
