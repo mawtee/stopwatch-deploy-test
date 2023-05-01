@@ -813,18 +813,18 @@ def map_pfa_title(year_ops, pfaName_ops, legislation_ops):
 
 
 ###############################################################################
-logo = pn.panel('stopwatch_logo.png', width=250, align='start')
+#logo = pn.panel('stopwatch_logo.png', width=250, align='start')
 
 
-def image_to_data_url(filename):
-    ext = filename.split('.')[-1]
-    prefix = f'data:image/{ext};base64,'
-    with open(filename, 'rb') as f:
-        img = f.read()
-    return prefix + base64.b64encode(img).decode('utf-8')
+#def image_to_data_url(filename):
+#    ext = filename.split('.')[-1]
+#    prefix = f'data:image/{ext};base64,'
+#    with open(filename, 'rb') as f:
+#        img = f.read()
+#    return prefix + base64.b64encode(img).decode('utf-8')
 
 
-logo2 = image_to_data_url('stopwatch_logo.png')
+#logo2 = image_to_data_url('stopwatch_logo.png')
 #logo2 = image_to_data_url('stopwatch_logo.png')
 
 #one = pn.widgets.Button(name='Overview', width=50, button_type='primary', height = 35)
@@ -847,7 +847,6 @@ colorpicker = pn.Row(
 
 
 # Key statistics   # Technical notes
-
 # 181818
 
 
@@ -859,7 +858,7 @@ colorpicker = pn.Row(
 # , favicon = logo2
 template = pn.template.FastGridTemplate(theme="dark",
                                         site="", title="Interactive stop and search tracker",
-                                        sidebar=[logo,pn.Spacer(
+                                        sidebar=[pn.Spacer(
                                             height=15), main_ops_pane, pn.Spacer(
                                             height=15), footer_pane],
                                         sidebar_width=410, header_background='#130C16',
