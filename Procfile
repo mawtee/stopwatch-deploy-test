@@ -1,1 +1,1 @@
-web: panel serve deploy.py --allow-websocket-origin=stopwatch-deploy-test.herokuapp.com
+web: panel serve  --port=$PORT deploy.py --allow-websocket-origin=stopwatch-deploy-test.herokuapp.com
