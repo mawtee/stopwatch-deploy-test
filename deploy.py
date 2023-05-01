@@ -5,7 +5,6 @@ Created on Sat Mar 18 13:00:49 2023
 @author: MatthewTibbles
 """
 
-from panel.template import DarkTheme
 import base64
 import numpy as np
 import random as rnd
@@ -14,9 +13,9 @@ import geopandas as gpd
 import panel as pn
 import panel_highcharts as ph
 import pydeck as pdk
-pn.extension("highchart", template="fast", sizing_mode="stretch_width")
+ph.config.theme("auto")
+pn.extension('highchart')
 pn.extension('deckgl')
-ph.config.theme(name="high-contrast-dark")
 rnd.seed(115520)
 
 
