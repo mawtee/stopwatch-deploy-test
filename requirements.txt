@@ -1,4 +1,4 @@
-panel==0.14.1
+panel==0.14.3
 panel-highcharts==20221018.1
 numpy==1.24.1
 pandas==1.5.3
