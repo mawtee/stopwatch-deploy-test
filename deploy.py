@@ -878,7 +878,7 @@ template.main[2:6, 7:12] = plot_tsscatter
 template.main[6:8, :6] = plot_bar_odds_ratio_UK
 template.main[6:8, 6:12] = plot_bar_odds_ratio_PFA
 
-template.show()
+template.servable()
 
 
 # populate factsheet + write out reference notes
